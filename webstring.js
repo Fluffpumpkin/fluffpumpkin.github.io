@@ -9,7 +9,7 @@ webring = {
 
   // PREV and NEXT get replaced with neighboring site urls
   widget: `
-    <div id="my-webring" style="gap: 8px; border-style: solid; display: inline-block"; border-color:#222133">
+    <div id="my-webring" style="gap: 8px; border-style: solid; display: inline-block; border-color:#222133">
 	  <div><img src="images/3d_webring.jpg" alt="3D Webring"></div>
       &nbsp;<a href="PREV" target="_top"><-prev</a>
       <a href="RANDOM" target="_top">random</a>
