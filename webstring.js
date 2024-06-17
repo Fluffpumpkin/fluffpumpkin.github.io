@@ -9,12 +9,12 @@ webring = {
 
   // PREV and NEXT get replaced with neighboring site urls
   widget: `
-    <div id="my-webring" style="display: flex; gap: 8px">
-	  <div>3D Webring</div>
-      <a href="PREV" target="_top">prev</a>
+    <div id="my-webring" style="gap: 8px; border-style: solid; display: inline-block">
+	  <div><img src="images/3d_webring.jpg" alt="3D Webring"></div>
+      &nbsp;<a href="PREV" target="_top"><-prev</a>
       <a href="RANDOM" target="_top">random</a>
-      <a href="NEXT" target="_top">next</a>
-    </div>
+      <a href="NEXT" target="_top">next -></a>
+    </div><br>
   `,
 
   error: "<div>This site isn't part of the 3D Webring yet.</div>",
