@@ -17,6 +17,9 @@
 
 <body>
 
+<div style="position: absolute; width: 192px; height: 86px; z-index: 1; left: 938px; top: 18px" id="layer1">
+<div align='center'><small><a target="_blank" href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Hit Counter</a></small><br><a target="_blank" href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=173020&s=34' border='0' alt='Free Website Hit Counter'></a></div></div>
+
 <p><img border="0" src="images/HeHeartlandCottage5668imagesWorkConstructAnim.gif" width="314" height="22"><br>
 Hi! I'm Fluffpumpkin and I'm a 3D artist and animator</p>
 <p>Main Website: <a target="_blank" href="https://www.fluffpumpkin.net/">https://www.fluffpumpkin.net/</a><br>
@@ -47,6 +50,23 @@ $('.marquee').marquee({
   startVisible: 'true',
   delayBeforeStart: '0'
 });
+</script>
+<script>
+function setCookie(c_name,value,exdays){var exdate=new Date();exdate.setDate(exdate.getDate() + exdays);var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());document.cookie=c_name + "=" + c_value;}
+
+function getCookie(c_name){var c_value = document.cookie;var c_start = c_value.indexOf(" " + c_name + "=");if (c_start == -1){c_start = c_value.indexOf(c_name + "=");}if (c_start == -1){c_value = null;}else{c_start = c_value.indexOf("=", c_start) + 1;var c_end = c_value.indexOf(";", c_start);if (c_end == -1){c_end = c_value.length;}c_value = unescape(c_value.substring(c_start,c_end));}return c_value;}
+
+checkSession();
+
+function checkSession(){
+   var c = getCookie("visited");
+   if (c === "yes") {
+     console.log("Welcome back!");
+   } else {
+     setCookie("visited", "yes", 365);
+     alert("This website was built using Firefox with a 790 x 1530 browser size in mind. Other sizes and browsers might display improperly.");
+   }
+}
 </script>
 </body>
 
