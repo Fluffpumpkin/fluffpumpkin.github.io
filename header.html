@@ -10,12 +10,35 @@
 </head>
 
 <body>
+<div style="position: absolute; width: 192px; height: 86px; z-index: 1; left: 1142px; top: 31px" id="layer1">
+	<div align='center'>
+		<img border="0" src="buttons/music_muted.gif" width="64" height="64"  onclick="toggle_music()" role="button" style="cursor: pointer;" id="music_toggle"></div>
+</div>
 <script>NekoType="lucky"</script>
 <h1 id=nl><script src="https://webneko.net/n20171213.js"></script><a 
 href="https://webneko.net">Neko</a></h1>
 <h3 style="text-align: center"><a href="index.html" target="_top">
 <img border="0" src="images/blinkiesCafe-U7.gif" width="600" height="80"></a></h3>
 
+<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+<midi-player id="midip" src="sweden-minecraft.mid" loop sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/salamander"></midi-player>
+
+<script>
+midip = document.getElementById("midip")
+toggle = false;
+button = document.getElementById("music_toggle")
+midip.start()
+function toggle_music(){
+toggle = !toggle
+if (toggle){
+button.src = "buttons/music_playing.gif"
+midip.start()
+}else{
+button.src = "buttons/music_muted.gif"
+midip.stop()
+}
+}
+</script>
 </body>
 
 </html>
