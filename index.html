@@ -1,26 +1,98 @@
-<!DOCTYPE html>
 <html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>Fluffpumpkin Studios</title>
+<style>
+html, body {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+iframe {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    display: block;
+}
+.iframe-parent {
+width: 100%;
+height: 100%;
+position: relative;
+}
+    
+.transparent-block {
+width: 100%;
+height: 100%;
+position: absolute;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.pixels{
+	image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+</style>
 <!--mstheme--><link rel="stylesheet" type="text/css" href="_themes/flufftheme/fluf1011.css"><meta name="Microsoft Theme" content="flufftheme 1011, default">
 </head>
 
-<frameset framespacing="0" border="0" frameborder="0" rows="114,76%,*">
-	<frame name="banner" scrolling="no" noresize target="contents" src="header.html">
-	<frameset cols="189,75%,*">
-		<frame name="contents" target="main" src="sidebar.html" scrolling="no" noresize>
-		<frame name="main" src="home.html" scrolling="auto" noresize>
-		<frame name="bumper" target="main" src="bumper.html" scrolling="no" noresize>
-	</frameset>
-	<frame name="footer" scrolling="no" noresize target="contents" src="footer.html">
-	<noframes>
-	<body>
+<body>
+<script src="jquery-3.7.1.min.js"></script>
+<script src="jquery-ui.min.js"></script>
 
-	<p>This page uses frames, but your browser doesn't support them.</p>
+<div id="shopkeeper" class="frameclose" style="cursor:move;  position: absolute; width: 550px; height: 370px; z-index: 1; left: 32%; top: 3%; border-style: solid; border-width: 3px; background-color:#FFFFFF;">
+<img class="pixels" src="images/shopkeeper.png" width=100%>
+</div>
+<div class="frameclose" id="shoptext" style="position: absolute; width: 550px; height: 370px; z-index: 1; left: 32%; top: 50%; border-style: solid; border-width: 3px; background-color:#FFFFFF;">
+<div style="width: 100%; height: 68px; background-color: #d77bba; cursor:move; padding: 10px 0;">
+<font size="6">&nbsp; SHOP KEEPER</font></div>
+<blockquote>
+	<p><font size="5">Welcome to my shop! We're still setting things up so please check back later okay?</font></p>
+</blockquote>
+<a href="javascript:void(0);" onclick="shop()"><img class="pixels" src="buttons/return.gif" width="40%"></div></a>
+</div>
+<script> $( function() { $( "#shopkeeper" ).draggable(); }); </script>
+<script> $( function() { $( "#shoptext" ).draggable(); }); </script>
+<div class="iframe-parent" id="transparent">
+<!--<div class="transparent-block frameclose" id="cover"></div>-->
+<iframe name="I1" src="base.html" width="100%" height="100%" scrolling="no" border="0" frameborder="0" id="iframe">
+Your browser does not support inline frames or is currently configured not to display inline frames.
+</iframe>
 
-	</body>
-	</noframes>
-</frameset>
+<script>
+$('.frameClose').hide();
+
+const transparent = document.getElementById("transparent");
+const frameframe = document.getElementById("iframe");
+
+var image = new Image();
+image.src = "images/shop.gif";
+
+let cover = document.createElement("div");
+cover.className = "transparent-block"
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function shop(){
+	image.src = "images/shop.gif?p" + new Date().getTime();
+	if(document.body.contains(cover)){
+		$('.frameClose').hide();
+		cover.remove()
+	}else{
+		transparent.insertBefore(cover,frameframe)
+		$(cover).css('background-image', 'url(' + image.src + ')');
+		await sleep(1600);
+		$('.frameClose').show();
+	}
+}
+</script>
+</body>
+
 </html>
