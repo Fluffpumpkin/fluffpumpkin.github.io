@@ -1,0 +1,20 @@
+a{
+    color: #339999;
+}
+
+body{
+    font-size: 18px;
+}
+.marquee{
+    position: fixed;
+    left:0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.nextto{
+    display: inline-block;
+}
+.rightbuttons{
+    margin-bottom: 50px;
+}
