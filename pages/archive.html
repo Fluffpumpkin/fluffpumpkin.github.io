@@ -1,11 +1,30 @@
 <link rel="stylesheet" href="/scripts/secondstyle.css">
 <h3>Post Archive</h3>
-- <a href="/posts/01-14-2025-Retro-Theme.html">01-14-2025 Retro Theme</a><br>
-- <a href="/posts/10-26-2023-Snake-Game.html">10-26-2023 Snake Game</a><br>
-- <a href="/posts/08-11-2023-Internship.html">08-11-2023 Internship</a><br>
-- <a href="/posts/05-10-2023-Smaller-Projects.html">05-10-2023 Smaller Projects</a><br>
-- <a href="/posts/04-01-2023-Rythm-Game.html">04-01-2024 Rythm Game</a><br>
-- <a href="/posts/03-14-2023-Can-Fight.html">03-14-2023 Can Fight</a><br>
-- <a href="/posts/03-07-2023-Who-Am-I.html">03-07-2023 Who Am I</a><br>
-- <a href="/posts/03-06-2023-Surreal.html">03-06-2023 Surreal</a><br>
-- <a href="/posts/03-06-2023-Space-Cat.html">03-06-2023 Space Cat</a>
+<div id="postbox">
+
+</div>
+<script>
+ function fetchposts() {
+   fetch(`https://kitty.meadow.cafe/api/v1/get-user-posts-messages/25`)
+     .then(res => res.json())
+     .then(resJSON => {
+       // interact with resJSON here
+       console.log(resJSON);
+       let posts = resJSON;
+       posts.reverse()
+       let postbox = document.getElementById("postbox");
+       for (let i = 0; i < posts.length; i++) {
+         let post = posts[i];
+         if (post.Published){
+            postbox.innerHTML += "- ";
+            let postlink = document.createElement("a");
+            postlink.innerHTML = new Date(Date.parse(post.PublishedDate)).toLocaleDateString() + " " + post.Title
+            postlink.href = "logs.html?=" + post.Slug;
+            postbox.appendChild(postlink);
+            postbox.appendChild(document.createElement("br"));
+         }
+       }
+     });
+ }
+ fetchposts();
+</script>
