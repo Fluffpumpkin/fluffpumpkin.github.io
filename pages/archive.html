@@ -9,7 +9,6 @@
      .then(res => res.json())
      .then(resJSON => {
        // interact with resJSON here
-       console.log(resJSON);
        let posts = resJSON;
        posts.reverse()
        let postbox = document.getElementById("postbox");

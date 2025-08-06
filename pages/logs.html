@@ -9,7 +9,6 @@
     function displayPost(){
         url = window.location.href;
         request = url.substring(url.lastIndexOf('/') + 1).split('?=')[1];
-        console.log(request);
         fetchposts();
     }
     function fetchposts() {
@@ -17,7 +16,6 @@
             .then(res => res.json())
             .then(resJSON => {
             // interact with resJSON here
-            console.log(resJSON);
             let posts = resJSON;
             posts.reverse()
             let postbox = document.getElementById("postbox");
