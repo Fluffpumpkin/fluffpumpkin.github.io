@@ -1,3 +1,9 @@
+<style>
+    img {
+        max-height: 70px;
+        max-width: 100%;
+    }
+</style>
 <link rel="stylesheet" href="/scripts/secondstyle.css">
 <h3>Post Archive</h3>
 <div id="postbox">
@@ -14,7 +20,7 @@
        let postbox = document.getElementById("postbox");
        for (let i = 0; i < posts.length; i++) {
          let post = posts[i];
-         if (post.Published){
+         if (post.Published && !post.IsPage) {
             postbox.innerHTML += "- ";
             let postlink = document.createElement("a");
             postlink.innerHTML = new Date(Date.parse(post.PublishedDate)).toLocaleDateString() + " " + post.Title
