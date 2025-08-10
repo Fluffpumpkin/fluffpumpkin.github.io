@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
+         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=.6">
         <title>Fluffpumpkin Studios</title>
         <link rel="stylesheet" href="scripts/styles.css">
@@ -14,7 +14,7 @@
 
         <div class="div-container">
             <div class="header">
-                <img src="images/oldHeader.gif">
+                <img src="images/oldHeader.gif" class="pixeled">
             </div>
             <div class="content">
                 <div class="navbar aligned">
@@ -51,7 +51,12 @@
                 });
                 var cimg = document.querySelector('img[src*="' + current + '.gif"]');
                 cimg.setAttribute('src', 'images/buttons/' + current + '_open.gif');
-                //history.replaceState('data to be passed', 'Title of the page', '/test');
+
+                innerframe.contentWindow.document.querySelectorAll('img[src*="fc2"]').forEach(function(element) {
+                    element.setAttribute('class', 'pixeled');
+                    element.setAttribute('title', 'Hit Counter')
+                    element.setAttribute('alt', 'Hit Counter')
+                })
             }
             function getPage(){
                 url = window.location.href;

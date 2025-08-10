@@ -18,3 +18,8 @@ body{
 .rightbuttons{
     margin-bottom: 50px;
 }
+.pixeled{
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
