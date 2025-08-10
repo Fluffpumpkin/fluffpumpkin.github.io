@@ -4,11 +4,12 @@
         max-width: 100%;
     }
 </style>
+<link rel="stylesheet" href="/scripts/secondstyle.css">
 <div id="postbox"></div>
 <script>
     function displayPost(){
         url = window.location.href;
-        request = url.substring(url.lastIndexOf('/') + 1).split('?=')[1];
+        request = url.substring(url.lastIndexOf('/') + 1).split('?')[1];
         fetchposts();
     }
     function fetchposts() {

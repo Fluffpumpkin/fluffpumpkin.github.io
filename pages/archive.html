@@ -24,7 +24,7 @@
             postbox.innerHTML += "- ";
             let postlink = document.createElement("a");
             postlink.innerHTML = new Date(Date.parse(post.PublishedDate)).toLocaleDateString() + " " + post.Title
-            postlink.href = "logs.html?=" + post.Slug;
+            postlink.href = "logs.html?" + post.Slug;
             postbox.appendChild(postlink);
             postbox.appendChild(document.createElement("br"));
          }

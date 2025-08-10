@@ -24,7 +24,7 @@
                     <a href="pages/gallery.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/gallery.gif" onmouseover="this.setAttribute('src', 'images/buttons/gallery_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/gallery.gif')"></a><br>
                     <a href="pages/webring.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/webring.gif" onmouseover="this.setAttribute('src', 'images/buttons/webring_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/webring.gif')"></a><br>
                 </div>
-                <div class="main aligned"><iframe class="innerframe" name="innerframe" src="pages/home.html"></iframe></div>
+                <div class="main aligned"><iframe id="innerframe" class="innerframe" name="innerframe" src="pages/home.html"></iframe></div>
                 <div class="aligned" style="width:10%"></div>
             </div>
             <div class="footer">
@@ -32,5 +32,33 @@
                 <a href="https://www.fluffpumpkin.net/">https://www.fluffpumpkin.net/</a></p>
             </div>
         </div>
+
+        <script>
+            function getPage(){
+                url = window.location.href;
+                request = url.substring(url.lastIndexOf('/') + 1).split('?')[1];
+                tags = request.split(';');
+                p = null;
+                s = null;
+                for(i = 0; i < tags.length; i++){
+                    tag = tags[i];
+                    type = tag.split(':')[0];
+                    value = tag.split(':')[1];
+                    if(type == 'p' && p == null){
+                        p = "pages/" + value + ".html";
+                    }
+                    if(type == 's' && s == null){
+                        s = "?" + value;
+                    }
+                }
+                if(p != null && s != null){
+                    document.getElementById("innerframe").src = p + s;
+                }
+                else if(p != null){
+                    document.getElementById("innerframe").src = p;
+                }
+            }
+            getPage();
+        </script>
     </body>
 </html>
