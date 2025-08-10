@@ -18,13 +18,13 @@
             </div>
             <div class="content">
                 <div class="navbar aligned">
-                    <a href="pages/home.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/home.gif" onmouseover="this.setAttribute('src', 'images/buttons/home_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/home.gif')"></a><br>
-                    <a href="pages/about.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/about.gif" onmouseover="this.setAttribute('src', 'images/buttons/about_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/about.gif')"></a><br>
-                    <a href="pages/archive.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/archive.gif" onmouseover="this.setAttribute('src', 'images/buttons/archive_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/archive.gif')"></a><br>
-                    <a href="pages/gallery.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/gallery.gif" onmouseover="this.setAttribute('src', 'images/buttons/gallery_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/gallery.gif')"></a><br>
-                    <a href="pages/webring.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/webring.gif" onmouseover="this.setAttribute('src', 'images/buttons/webring_open.gif')" onmouseout="this.setAttribute('src', 'images/buttons/webring.gif')"></a><br>
+                    <a href="pages/home.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/home.gif" onmouseover="this.setAttribute('src', 'images/buttons/home_open.gif')" onmouseout="if(current != 'home') this.setAttribute('src', 'images/buttons/home.gif')"></a><br>
+                    <a href="pages/about.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/about.gif" onmouseover="this.setAttribute('src', 'images/buttons/about_open.gif')" onmouseout="if(current != 'about') this.setAttribute('src', 'images/buttons/about.gif')"></a><br>
+                    <a href="pages/archive.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/archive.gif" onmouseover="this.setAttribute('src', 'images/buttons/archive_open.gif')" onmouseout="if(current != 'archive') this.setAttribute('src', 'images/buttons/archive.gif')"></a><br>
+                    <a href="pages/gallery.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/gallery.gif" onmouseover="this.setAttribute('src', 'images/buttons/gallery_open.gif')" onmouseout="if(current != 'gallery') this.setAttribute('src', 'images/buttons/gallery.gif')"></a><br>
+                    <a href="pages/webring.html" target="innerframe"><img class="pixeled navbutton" src="images/buttons/webring.gif" onmouseover="this.setAttribute('src', 'images/buttons/webring_open.gif')" onmouseout=" if(current != 'webring') this.setAttribute('src', 'images/buttons/webring.gif')"></a><br>
                 </div>
-                <div class="main aligned"><iframe id="innerframe" class="innerframe" name="innerframe" src="pages/home.html"></iframe></div>
+                <div class="main aligned"><iframe id="innerframe" class="innerframe" name="innerframe" src="pages/home.html" onLoad="updateURL();"></iframe></div>
                 <div class="aligned" style="width:10%"></div>
             </div>
             <div class="footer">
@@ -34,6 +34,25 @@
         </div>
 
         <script>
+            innerframe = document.getElementById("innerframe")
+            current = "home"
+
+            function updateURL(){
+                request = innerframe.contentWindow.location.href
+                tag1 = request.split('/')
+                tag2 = tag1[4].split('.html')
+                tag3 = tag2[1].split('?')
+                if (tag3[1] == undefined) {window.history.replaceState('null', 'Fluffpumpkin Studios', '?p:' + tag2[0]);}
+                else{window.history.replaceState('null', 'Fluffpumpkin Studios', '?p:' + tag2[0] + ';s:' + tag3[1]);}
+                current = tag2[0];
+                var images = document.querySelectorAll('img[src*="_open.gif"]');
+                images.forEach(function(element) {
+                    element.setAttribute('src', 'images/buttons/' + element.src.split('_open.gif')[0].split('images/buttons/')[1] + '.gif');
+                });
+                var cimg = document.querySelector('img[src*="' + current + '.gif"]');
+                cimg.setAttribute('src', 'images/buttons/' + current + '_open.gif');
+                //history.replaceState('data to be passed', 'Title of the page', '/test');
+            }
             function getPage(){
                 url = window.location.href;
                 request = url.substring(url.lastIndexOf('/') + 1).split('?')[1];
@@ -52,10 +71,10 @@
                     }
                 }
                 if(p != null && s != null){
-                    document.getElementById("innerframe").src = p + s;
+                    innerframe.src = p + s;
                 }
                 else if(p != null){
-                    document.getElementById("innerframe").src = p;
+                    innerframe.src = p;
                 }
             }
             getPage();
