@@ -16,7 +16,7 @@
      .then(resJSON => {
        // interact with resJSON here
        let posts = resJSON;
-       posts.reverse()
+       posts.sort((a, b) => new Date(b.PublishedDate) - new Date(a.PublishedDate));
        let postbox = document.getElementById("postbox");
        for (let i = 0; i < posts.length; i++) {
          let post = posts[i];
