@@ -4,7 +4,8 @@
 webring = {
 
   sites: [
-    "www.fluffpumpkin.net"
+    "www.fluffpumpkin.net",
+    "willascool.neocities.org"
   ],
 
   // PREV and NEXT get replaced with neighboring site urls
