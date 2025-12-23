@@ -6,7 +6,7 @@ webring = {
   sites: [
     "www.fluffpumpkin.net",
     "willascool.neocities.org",
-    "https://picelboi.xyz"
+    "picelboi.xyz"
   ],
 
   // PREV and NEXT get replaced with neighboring site urls
