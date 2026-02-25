@@ -7,7 +7,8 @@ webring = {
     "www.fluffpumpkin.net",
     "willascool.neocities.org",
     "picelboi.xyz/promo",
-    "cjsatnarine.space"
+    "cjsatnarine.space",
+	"lillinet.neocities.org/LilliHome"
   ],
 
   // PREV and NEXT get replaced with neighboring site urls
