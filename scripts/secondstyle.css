@@ -31,3 +31,9 @@ code{
 #transring {
 	width: fit-content;
 }
+
+.guestbook-message-reply {
+	margin-left: 30px;
+	border-left: 2px solid #399;
+	padding-left: 10px;
+}
