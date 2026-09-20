@@ -6,7 +6,7 @@ webring = {
   sites: [
     "www.fluffpumpkin.net",
     "willascool.neocities.org",
-    "picelboi.xyz/promo",
+    "ichigoleite.com",
     "cjsatnarine.space",
 	"lillinet.neocities.org/LilliHome"
   ],
